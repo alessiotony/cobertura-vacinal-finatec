@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infográfico: Metodologia de Seleção de Amostra para Pesquisa-Ação em Vacinação</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .flow-step {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            color: #FFFFFF;
+            font-weight: bold;
+            min-height: 100px;
+        }
+        .flow-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #0d889a;
+            margin: 0.5rem 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 0.75rem;
+            text-align: left;
+        }
+        th {
+            background-color: #f8fafc;
+            font-weight: bold;
+            color: #334155;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12">
+            <div class="flex flex-wrap justify-center items-center gap-4 mb-6">
+                <img src="https://placehold.co/120x60/0d889a/ffffff?text=UnB" alt="Logomarca da Universidade de Brasília" class="h-16 w-auto rounded-md shadow-sm">
+                <img src="https://placehold.co/120x60/18c3d7/ffffff?text=MS" alt="Logomarca do Ministério da Saúde" class="h-16 w-auto rounded-md shadow-sm">
+                <img src="https://placehold.co/120x60/f2a341/ffffff?text=CIMVAC" alt="Logomarca da CIMVAC" class="h-16 w-auto rounded-md shadow-sm">
+                <img src="https://placehold.co/120x60/0d889a/ffffff?text=FINATEC" alt="Logomarca da FINATEC" class="h-16 w-auto rounded-md shadow-sm">
+            </div>
+            <h1 class="text-4xl md:text-5xl font-black text-[#0d889a] mb-2">Metodologia de Seleção de Amostra</h1>
+            <p class="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto">Um mergulho interativo no plano de trabalho para o projeto "Pesquisa-ação: Qualificações de ações de vacinação na Atenção Primária à Saúde".</p>
+        </header>
+        
+        <main class="space-y-16">
+
+            <section id="overview" class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-[#0d889a] mb-4 text-center">Visão Geral do Processo</h2>
+                <p class="text-center text-gray-700 mb-8 max-w-3xl mx-auto">Para garantir a robustez científica da pesquisa, foi desenvolvido um rigoroso processo multifásico para identificar e selecionar os municípios participantes. Este processo garante que a intervenção seja direcionada às áreas de maior necessidade e que os resultados sejam metodologicamente sólidos.</p>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
+                    <div class="flow-step bg-[#0d889a]">Análise de Dados</div>
+                    <div class="flow-arrow transform md:rotate-0">➔</div>
+                    <div class="flow-step bg-[#18c3d7]">Critérios de Elegibilidade</div>
+                    <div class="flow-arrow transform md:rotate-0">➔</div>
+                    <div class="flow-step bg-[#0d889a]">Geração da Amostra</div>
+                    <div class="flow-arrow transform md:rotate-0">➔</div>
+                    <div class="flow-step bg-[#18c3d7]">Alocação e Pareamento</div>
+                </div>
+            </section>
+            
+            <section id="criteria" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+                    <div class="text-6xl font-black text-[#f2a341]">1</div>
+                    <h3 class="text-2xl font-bold text-[#0d889a] mt-4 mb-2">População</h3>
+                    <p class="text-gray-700">O foco foi em municípios com <strong class="text-[#f2a341]">menos de 50 mil habitantes</strong>, permitindo intervenções mais focadas e gerenciáveis.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+                    <div class="text-6xl font-black text-[#f2a341]">2</div>
+                    <h3 class="text-2xl font-bold text-[#0d889a] mt-4 mb-2">Cobertura Vacinal</h3>
+                    <p class="text-gray-700">Foram selecionados municípios com cobertura <strong class="text-[#f2a341]">inferior a 50%</strong> em pelo menos uma das vacinas chave do calendário infantil (incluindo a média de Pólio oral e injetável).</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+                    <div class="text-6xl font-black text-[#f2a341]">3</div>
+                    <h3 class="text-2xl font-bold text-[#0d889a] mt-4 mb-2">IDHM</h3>
+                    <p class="text-gray-700">Priorizou-se municípios com Índice de Desenvolvimento Humano Municipal (IDHM) <strong class="text-[#f2a341]">inferior a 0.7</strong> (médio, baixo e muito baixo).</p>
+                </div>
+            </section>
+
+            <section id="sample-generation" class="bg-white rounded-lg shadow-lg p-6 md:p-8 text-center">
+                <h2 class="text-3xl font-bold text-[#0d889a] mb-4">Geração da Amostra Final</h2>
+                <p class="text-gray-700 max-w-3xl mx-auto mb-6">Após a aplicação rigorosa dos três critérios de elegibilidade, um grupo específico de municípios foi identificado, resultando em "uma planilha contendo 104 municípios que atendem aos critérios supramencionados".</p>
+                <div class="bg-[#e6f7f9] inline-block p-6 rounded-lg">
+                    <p class="text-2xl font-bold text-[#0d889a]">Amostra Final</p>
+                    <p class="text-7xl font-black text-[#0d889a]">104</p>
+                    <p class="text-2xl font-bold text-[#0d889a]">Municípios Elegíveis</p>
+                </div>
+            </section>
+
+            <section id="group-allocation" class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-[#0d889a] mb-4 text-center">Alocação dos Grupos de Tratamento e Controle</h2>
+                <p class="text-center text-gray-700 mb-6 max-w-3xl mx-auto">Para garantir a reprodutibilidade e a comparabilidade, os municípios foram alocados aleatoriamente em grupos de Tratamento (intervenção) e Controle. Uma semente de '1' foi usada para a randomização e o limiar de alocação foi definido para que 20 municípios fossem tratados, resultando em um limiar de 'n_random' de 0.1574.</p>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left text-gray-700">
+                        <thead class="text-xs text-gray-900 uppercase bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">Região de Ocorrência</th>
+                                <th scope="col" class="px-6 py-3">Controle</th>
+                                <th scope="col" class="px-6 py-3">Tratado</th>
+                                <th scope="col" class="px-6 py-3">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-white border-b">
+                                <td class="px-6 py-4">Centro-Oeste</td>
+                                <td class="px-6 py-4">7</td>
+                                <td class="px-6 py-4">1</td>
+                                <td class="px-6 py-4">8</td>
+                            </tr>
+                            <tr class="bg-white border-b">
+                                <td class="px-6 py-4">Nordeste</td>
+                                <td class="px-6 py-4">39</td>
+                                <td class="px-6 py-4">9</td>
+                                <td class="px-6 py-4">48</td>
+                            </tr>
+                            <tr class="bg-white border-b">
+                                <td class="px-6 py-4">Norte</td>
+                                <td class="px-6 py-4">25</td>
+                                <td class="px-6 py-4">5</td>
+                                <td class="px-6 py-4">30</td>
+                            </tr>
+                            <tr class="bg-white border-b">
+                                <td class="px-6 py-4">Sudeste</td>
+                                <td class="px-6 py-4">5</td>
+                                <td class="px-6 py-4">2</td>
+                                <td class="px-6 py-4">7</td>
+                            </tr>
+                            <tr class="bg-white border-b">
+                                <td class="px-6 py-4">Sul</td>
+                                <td class="px-6 py-4">8</td>
+                                <td class="px-6 py-4">3</td>
+                                <td class="px-6 py-4">11</td>
+                            </tr>
+                            <tr class="bg-gray-100 font-bold">
+                                <td class="px-6 py-4">Total</td>
+                                <td class="px-6 py-4">84</td>
+                                <td class="px-6 py-4">20</td>
+                                <td class="px-6 py-4">104</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="matching" class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-[#0d889a] mb-2 text-center">A Vantagem do Balanceamento por Entropia</h2>
+                <p class="text-center text-gray-700 mb-8 max-w-3xl mx-auto">Para garantir a máxima comparabilidade entre os grupos de tratamento e controle, o estudo optou por uma metodologia de pareamento de ponta, o Balanceamento por Entropia (EB), em detrimento do tradicional Propensity Score Matching (PSM). A escolha foi estratégica para aumentar a robustez e a validade dos resultados.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-2xl font-bold text-center text-[#18c3d7] mb-4">Propensity Score Matching (PSM)</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start p-3 bg-red-50 rounded-lg">
+                                <span class="text-red-500 font-bold text-xl mr-3">✗</span>
+                                <div>
+                                    <h4 class="font-bold">Perda de Amostra</h4>
+                                    <p class="text-sm text-gray-600">Frequentemente descarta unidades não pareadas, reduzindo o poder estatístico.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start p-3 bg-red-50 rounded-lg">
+                                <span class="text-red-500 font-bold text-xl mr-3">✗</span>
+                                <div>
+                                    <h4 class="font-bold">Viés do Pesquisador</h4>
+                                    <p class="text-sm text-gray-600">A especificação do modelo de propensão pode ser subjetiva e introduzir viés.</p>
+                                </div>
+                            </li>
+                             <li class="flex items-start p-3 bg-red-50 rounded-lg">
+                                <span class="text-red-500 font-bold text-xl mr-3">✗</span>
+                                <div>
+                                    <h4 class="font-bold">Balanceamento Indireto</h4>
+                                    <p class="text-sm text-gray-600">Equilibra a pontuação de propensão, mas não garante o balanço de cada variável individualmente.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-center text-[#0d889a] mb-4">Balanceamento por Entropia (EB)</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start p-3 bg-green-50 rounded-lg">
+                                <span class="text-green-500 font-bold text-xl mr-3">✓</span>
+                                <div>
+                                    <h4 class="font-bold">Retenção Total da Amostra</h4>
+                                    <p class="text-sm text-gray-600">Utiliza todas as unidades através de reponderação, maximizando o poder estatístico.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start p-3 bg-green-50 rounded-lg">
+                                <span class="text-green-500 font-bold text-xl mr-3">✓</span>
+                                <div>
+                                    <h4 class="font-bold">Redução da Discricionariedade</h4>
+                                    <p class="text-sm text-gray-600">Calcula pesos de forma direta, aumentando a objetividade e reprodutibilidade.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start p-3 bg-green-50 rounded-lg">
+                                <span class="text-green-500 font-bold text-xl mr-3">✓</span>
+                                <div>
+                                    <h4 class="font-bold">Balanceamento Direto e Robusto</h4>
+                                    <p class="text-sm text-gray-600">Garante o equilíbrio direto das médias e variâncias das covariáveis, resultando em estimativas mais confiáveis.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="vaccine-coverage-analysis" class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-[#0d889a] mb-2 text-center">Cobertura Vacinal dos Municípios Elegíveis</h2>
+                <p class="text-center text-gray-700 mb-8 max-w-3xl mx-auto">As médias de cobertura vacinal dos 104 municípios elegíveis refletem a necessidade de intervenção. A "Tríplice Viral 2ª Dose" se destaca com a menor cobertura média, evidenciando uma lacuna crítica. A linha de 50% indica o limiar de elegibilidade para baixa cobertura.</p>
+                <div class="chart-container">
+                    <canvas id="vaccineCoverageChart"></canvas>
+                </div>
+            </section>
+
+            <section id="worst-coverage-municipalities" class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-[#0d889a] mb-4 text-center">Municípios com as Piores Coberturas Vacinais</h2>
+                <p class="text-center text-gray-700 mb-6 max-w-3xl mx-auto">A tabela abaixo apresenta os 10 municípios com as menores coberturas para a Tríplice Viral 2ª Dose, que foi a vacina com a menor média na amostra. As porcentagens em vermelho indicam coberturas abaixo de 50%, destacando as áreas mais críticas para intervenção.</p>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left text-gray-700">
+                        <thead class="text-xs text-gray-900 uppercase bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">Município</th>
+                                <th scope="col" class="px-6 py-3">Pólio Média (%)</th>
+                                <th scope="col" class="px-6 py-3">Penta DTP HepB Hib (%)</th>
+                                <th scope="col" class="px-6 py-3">Tríplice Viral 1ª Dose (%)</th>
+                                <th scope="col" class="px-6 py-3">Tríplice Viral 2ª Dose (%)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-white border-b">
+                                <td class="px-6 py-4">Melgaço (PA)</td>
+                                <td class="px-6 py-4 text-red-600 font-semibold">47.11</td>
+                                <td class="px-6 py-4 text-red-600 font-semibold">31.34</td>
+                                <td class="px-6 py-4 text-red-600 font-semibold">42.51</td>
+                                <td class="px-6 py-4 text-red-600 font-semibold">18.36</td>
+                            </tr>
+                            <tr class="bg-white border-b">
+                                <td class="px-6 py-4">Uiramutã (RR)</td>
+                                <td class="px-6 py-4 text-red-600 font-semibold">26.29</td>
+                                <td class="px-6 py-4 text-red-600 font-semibold">22.37</td>
+                                <td class="px-6 py-4 text-red-600 font-semibold">28.88</td>
+                                <td class="px-6 py-4 text-red-600 font-semibold">16.53</td>
+                            </tr>
+                            <tr class="bg-white border-b">
+                                <td class="px-6 py-4">Normandia (RR)</td>
+                                <td class="px-6 py-4 text-red-600 font-semibold">36.62</td>
+                                <td class="px-6 py-4 text-red-600 font-semibold">34.73</td>
+                                <td class="px-6 py-4 text-red-600 font-semibold">37.39</td>
+                                <td class="px-6 py-4 text-red-600 font-semibold">21.02</td>
+                            </tr>
+                            <tr class="bg-white border-b">
+                                <td class="px-6 py-4">Nazária (PI)</td>
+                                <td class="px-6 py-4 text-red-600 font-semibold">38.30</td>
+                                <td class="px-6 py-4 text-red-600 font-semibold">42.55</td>
+                                <td class="px-6 py-4 text-red-600 font-semibold">47.52</td>
+                                <td class="px-6 py-4 text-red-600 font-semibold">30.50</td>
+                            </tr>
+                            <tr class="bg-white border-b">
+                                <td class="px-6 py-4">Água Fria (BA)</td>
+                                <td class="px-6 py-4 text-red-600 font-semibold">45.14</td>
+                                <td class="px-6 py-4 text-red-600 font-semibold">45.83</td>
+                                <td class="px-6 py-4">62.50</td>
+                                <td class="px-6 py-4 text-red-600 font-semibold">39.58</td>
+                            </tr>
+                            <tr class="bg-white border-b">
+                                <td class="px-6 py-4">São Félix do Xingu (PA)</td>
+                                <td class="px-6 py-4 text-red-600 font-semibold">49.33</td>
+                                <td class="px-6 py-4 text-red-600 font-semibold">47.26</td>
+                                <td class="px-6 py-4">50.56</td>
+                                <td class="px-6 py-4 text-red-600 font-semibold">40.35</td>
+                            </tr>
+                            <tr class="bg-white border-b">
+                                <td class="px-6 py-4">Presidente Sarney (MA)</td>
+                                <td class="px-6 py-4">57.19</td>
+                                <td class="px-6 py-4">53.68</td>
+                                <td class="px-6 py-4">55.09</td>
+                                <td class="px-6 py-4 text-red-600 font-semibold">26.32</td>
+                            </tr>
+                            <tr class="bg-white border-b">
+                                <td class="px-6 py-4">Santa Luzia do Paruá (MA)</td>
+                                <td class="px-6 py-4">56.55</td>
+                                <td class="px-6 py-4">56.27</td>
+                                <td class="px-6 py-4">57.06</td>
+                                <td class="px-6 py-4 text-red-600 font-semibold">29.13</td>
+                            </tr>
+                            <tr class="bg-white border-b">
+                                <td class="px-6 py-4">Palmeirândia (MA)</td>
+                                <td class="px-6 py-4">73.84</td>
+                                <td class="px-6 py-4">73.61</td>
+                                <td class="px-6 py-4">76.39</td>
+                                <td class="px-6 py-4 text-red-600 font-semibold">31.94</td>
+                            </tr>
+                            <tr class="bg-white border-b">
+                                <td class="px-6 py-4">Monção (MA)</td>
+                                <td class="px-6 py-4">76.33</td>
+                                <td class="px-6 py-4">82.03</td>
+                                <td class="px-6 py-4">74.18</td>
+                                <td class="px-6 py-4 text-red-600 font-semibold">45.32</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="idhm-distribution" class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-[#0d889a] mb-2 text-center">Distribuição do IDHM nos Municípios da Amostra</h2>
+                <p class="text-center text-gray-700 mb-8 max-w-3xl mx-auto">A maioria dos municípios selecionados para o estudo possui um Índice de Desenvolvimento Humano Municipal (IDHM) classificado como "Baixo", reforçando o foco do projeto em áreas com maior vulnerabilidade socioeconômica e potenciais desafios relacionados à saúde pública e vacinação.</p>
+                <div class="chart-container">
+                    <canvas id="idhmDistributionChart"></canvas>
+                </div>
+            </section>
+            
+            <section id="analysis-tools" class="bg-white rounded-lg shadow-lg p-6 md:p-8 text-center">
+                <h2 class="text-3xl font-bold text-[#0d889a] mb-4">Ferramentas para uma Ciência Aberta e Reprodutível</h2>
+                <p class="text-gray-700 max-w-3xl mx-auto mb-6">A escolha do ambiente de análise foi deliberada para garantir a máxima transparência, reprodutibilidade e integridade científica, alinhando o projeto com as melhores práticas da ciência de dados moderna.</p>
+                <div class="flex justify-center items-center space-x-8">
+                    <div class="text-center">
+                        <p class="text-6xl">🐍</p>
+                        <p class="text-xl font-bold mt-2">Python</p>
+                        <p class="text-gray-600">Linguagem poderosa e versátil para análise de dados.</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-6xl">📓</p>
+                        <p class="text-xl font-bold mt-2">Jupyter Notebook</p>
+                        <p class="text-gray-600">Ambiente interativo que integra código, visualizações e texto.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="text-center mt-16 pt-8 border-t border-gray-300">
+            <p class="text-gray-600">Infográfico gerado a partir do Relatório de Atividades do Bolsista Aléssio Tony Cavalcanti de Almeida (UFPB).</p>
+            <p class="text-gray-500 text-sm">Projeto coordenado pela professora Denise de Lima Costa Furlanetto (UnB).</p>
+        </footer>
+    </div>
+
+    <script>
+        const wrapLabels = (label) => {
+            const maxLen = 16;
+            if (label.length <= maxLen) {
+                return label;
+            }
+            const words = label.split(' ');
+            let lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + ' ' + word).length > maxLen && currentLine.length > 0) {
+                    lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    currentLine = currentLine ? currentLine + ' ' + word : word;
+                }
+            }
+            if (currentLine) {
+                lines.push(currentLine);
+            }
+            return lines;
+        };
+        
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            } else {
+                return label;
+            }
+        };
+
+        const vaccineData = {
+            labels: [
+                'Pólio (Média Oral e Injetável)',
+                'Penta DTP HepB Hib', 
+                'Tríplice Viral 1ª dose', 
+                'Tríplice Viral 2ª Dose'
+            ].map(wrapLabels),
+            datasets: [{
+                label: 'Cobertura Vacinal Média (%)',
+                data: [70.29, 74.10, 69.55, 40.86],
+                backgroundColor: [
+                    'rgba(13, 136, 154, 0.7)',
+                    'rgba(24, 195, 215, 0.7)',
+                    'rgba(13, 136, 154, 0.8)',
+                    'rgba(242, 163, 65, 0.9)' 
+                ],
+                borderColor: [
+                    '#0d889a',
+                    '#18c3d7',
+                    '#0d889a',
+                    '#f2a341'
+                ],
+                borderWidth: 1.5,
+                barPercentage: 0.6,
+                categoryPercentage: 0.7,
+            }]
+        };
+
+        const vaccineCtx = document.getElementById('vaccineCoverageChart').getContext('2d');
+        new Chart(vaccineCtx, {
+            type: 'bar',
+            data: vaccineData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y', 
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: {
+                            display: true,
+                            text: 'Cobertura Vacinal Média (%)',
+                            font: {
+                                weight: 'bold'
+                            }
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            autoSkip: false 
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback,
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.x !== null) {
+                                    label += context.parsed.x.toFixed(2) + '%';
+                                }
+                                return label;
+                            }
+                        }
+                    },
+                    annotation: {
+                        annotations: {
+                            line1: {
+                                type: 'line',
+                                xMin: 50,
+                                xMax: 50,
+                                borderColor: 'rgb(255, 99, 132)',
+                                borderWidth: 2,
+                                borderDash: [6, 6],
+                                label: {
+                                    content: 'Limiar de Elegibilidade (50%)',
+                                    enabled: true,
+                                    position: 'start',
+                                    backgroundColor: 'rgba(255, 99, 132, 0.8)'
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        const idhmData = {
+            labels: ['Baixo', 'Médio', 'Muito Baixo'],
+            datasets: [{
+                data: [55, 41, 8],
+                backgroundColor: [
+                    'rgba(242, 163, 65, 0.8)', 
+                    'rgba(13, 136, 154, 0.7)', 
+                    'rgba(24, 195, 215, 0.7)' 
+                ],
+                borderColor: [
+                    '#f2a341',
+                    '#0d889a',
+                    '#18c3d7'
+                ],
+                borderWidth: 1.5
+            }]
+        };
+
+        const idhmCtx = document.getElementById('idhmDistributionChart').getContext('2d');
+        new Chart(idhmCtx, {
+            type: 'pie', 
+            data: idhmData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'right', 
+                        labels: {
+                            font: {
+                                size: 14
+                            },
+                            boxWidth: 20, 
+                            padding: 20 
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed !== null) {
+                                    label += context.parsed;
+                                }
+                                return label + ' municípios';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
